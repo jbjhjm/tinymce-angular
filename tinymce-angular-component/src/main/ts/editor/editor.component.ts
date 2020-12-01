@@ -54,13 +54,13 @@ export class EditorComponent extends Events implements AfterViewInit, ControlVal
   @Input() public allowedEvents: string | string[] | undefined;
   @Input() public ignoreEvents: string | string[] | undefined;
 
-  private _elementRef: ElementRef;
-  private _element: Element | undefined;
-  private _disabled: boolean | undefined;
-  private _editor: any;
+  protected _elementRef: ElementRef;
+  protected _element: Element | undefined;
+  protected _disabled: boolean | undefined;
+  protected _editor: any;
 
-  private onTouchedCallback = noop;
-  private onChangeCallback = noop;
+  protected onTouchedCallback = noop;
+  protected onChangeCallback = noop;
 
 constructor(
   elementRef: ElementRef,
@@ -164,13 +164,13 @@ constructor(
     });
   }
 
-  private getScriptSrc() {
+  protected getScriptSrc() {
     return isNullOrUndefined(this.tinymceScriptSrc) ?
       `https://cdn.tiny.cloud/1/${this.apiKey}/tinymce/${this.cloudChannel}/tinymce.min.js` :
       this.tinymceScriptSrc;
   }
 
-  private initEditor(editor: any) {
+  protected initEditor(editor: any) {
     editor.on('blur', () => this.ngZone.run(() => this.onTouchedCallback()));
     editor.on(this.modelEvents, () => {
       this.ngZone.run(() => this.onChangeCallback(editor.getContent({ format: this.outputFormat })));

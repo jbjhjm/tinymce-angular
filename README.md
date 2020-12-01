@@ -1,4 +1,4 @@
-# Official TinyMCE Angular Component
+# Official TinyMCE Angular Component - Forked for access to private properties
 
 ## About
 
