@@ -1,7 +1,7 @@
 {
   "name": "@yoolabs/tinymce-angular",
   "description": "Official TinyMCE Angular Component - forked for access to private methods",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "repository": "https://github.com/jbjhjm/tinymce-angular.git",
   "author": "Tiny Technologies",
   "license": "Apache-2.0",

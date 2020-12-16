@@ -134,7 +134,7 @@ constructor(
     }
   }
 
-  public initialise() {
+  public buildTinyMceConfig() {
     const finalInit = {
       ...this.init,
       target: this._element,
@@ -145,22 +145,26 @@ constructor(
       setup: (editor: any) => {
         this._editor = editor;
         editor.on('init', (e: Event) => {
-          this.initEditor(editor);
+        this.initEditor(editor);
         });
         bindHandlers(this, editor);
-
+        
         if (this.init && typeof this.init.setup === 'function') {
-          this.init.setup(editor);
+        this.init.setup(editor);
         }
       }
     };
+    return finalInit;
+  }
+
+  public initialise() {
 
     if (isTextarea(this._element)) {
       this._element.style.visibility = '';
     }
 
     this.ngZone.runOutsideAngular(() => {
-      getTinymce().init(finalInit);
+      getTinymce().init(this.buildTinyMceConfig());
     });
   }
 
